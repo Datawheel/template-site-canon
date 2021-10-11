@@ -22,3 +22,7 @@ ecosystem.config.js
 
 # file generated on the app build
 index.js
+
+# gcp private keys
+*.gcp.json
+*.gcp.encoded
