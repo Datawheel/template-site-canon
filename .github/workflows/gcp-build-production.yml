@@ -1,28 +1,29 @@
-name: "[Google Cloud] Build a Develop Docker Image into Artifact Registry"
+name: "[Google Cloud] Build a Production Docker Image into Artifact Registry"
 
-# trigger the workflow when a push is committed to the develop branch
+# trigger the workflow when a push is committed to the main branch
+# IMPORTANT: Please Set Up Branch Protection to Prohibit Direct Commits to Main Branch
 on:
   push:
     branches:
-      - develop
+      - main
 
 # environment variables used for the respective instance (edit as needed)
 env:
   # docker variables
-  IMAGE_NAME: <PROJECT_NAME>-site-dev
-  IMAGE_TAG: latest-dev
+  IMAGE_NAME: <PROJECT_NAME>-site-prod
+  IMAGE_TAG: latest-prod
   # google cloud secrets (using github secrets)
   GCP_ARTIFACT_REGISTRY_REPO_NAME: ${{ secrets.GCP_ARTIFACT_REGISTRY_REPO_NAME }}
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
 
 jobs:
-  # builds the new docker image with cloud build
+  # builds the new docker image via cloud build
   build:
-    name: Build Docker Image with Cloud Build
+    name: Build the Docker Image via Cloud Build
     runs-on: ubuntu-latest
-    # IMPORTANT: setup develop environment in github environments
-    environment: develop_environment
+    # IMPORTANT: setup production environment in github environments
+    environment: production_environment
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v2
