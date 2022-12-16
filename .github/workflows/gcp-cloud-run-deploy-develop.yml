@@ -45,7 +45,7 @@ jobs:
       - name: Deploy Image to Cloud Run
         run: |-
           gcloud run deploy ${{ env.IMAGE_NAME }} \
-            --image=us-central1-docker.pkg.dev/${{env.GCP_PROJECT_ID}}/${{env.GCP_ARTIFACT_REGISTRY_REPO_NAME}}/${{env.IMAGE_NAME}}:${{IMAGE_TAG}} \
+            --image=us-central1-docker.pkg.dev/${{env.GCP_PROJECT_ID}}/${{env.GCP_ARTIFACT_REGISTRY_REPO_NAME}}/${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}} \
             --set-env-vars=CANON_LANGUAGES=${{ env.CANON_LANGUAGES }} \
             --set-env-vars=CANON_LANGUAGE_DEFAULT=${{ env.CANON_LANGUAGE_DEFAULT }} \
             --set-env-vars=CANON_LOGINS=${{ env.CANON_LOGINS }} \
