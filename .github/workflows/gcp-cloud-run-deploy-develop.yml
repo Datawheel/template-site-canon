@@ -31,7 +31,6 @@ env:
 jobs:
   # deploys the latest docker image in cloud run
   deploy:
-    needs: build
     name: Deploy Docker Image to Cloud Run
     runs-on: ubuntu-latest
     environment: develop_environment
