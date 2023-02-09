@@ -22,7 +22,7 @@ If you are using node directly to develop, please recall your typical `.env` fil
   - WITH ENV VARS AT BUILDTIME: `docker build --build-arg <ENV_NAME>=<ENV_VALUE> -t <PROJECT_NAME>-canon-site .`
 3. Run your container: 
   - NO ENV VARS AT RUNTIME: `docker run -p 3300:3300 <PROJECT_NAME>-nextjs-site`
-  - WITH ENV VARS AT RUNTIME: `docker run --env-file=./.env.local -p 3000:3000 <PROJECT_NAME>-canon-site`
+  - WITH ENV VARS AT RUNTIME: `docker run --env-file=./.env.local -p 3300:3300 <PROJECT_NAME>-canon-site`
 
 ---
 ### References
