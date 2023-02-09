@@ -1,22 +1,24 @@
-# starting point: an image of node-12
 FROM node:12-alpine
 
-# create the app directory inside the image and use it as root from now on
+# create the app directory inside the image and use it as working directory
 WORKDIR /usr/src/app
+COPY --chown=node:node . /usr/src/app
 
-# install app dependencies from the files package.json and package-lock.json
-# installing before transfering the app files allows us to take advantage of cached Docker layers
+# copy package files on the image
 COPY package*.json ./
+
+# install node packages. if you are building a production image, uncomment the ci installation
 RUN npm install
+#RUN npm ci --only=production
 
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# transfer the app codebase files to the root directory of the app
+# transfer the app files
 COPY ./ ./
 
 # build the app
 RUN npm run build
+
+# change user to node
+USER node
 
 # start the app on image startup
 CMD ["npm", "run", "start"]

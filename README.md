@@ -6,8 +6,6 @@ This is a Canon-Site template for projects using [canon](https://github.com/Data
 npm run dev
 ```
 
-After that the repository is created, you can use the [create-canon](https://github.com/Datawheel/canon/tree/master/packages/create-canon) tool in the `root` path of the created repository to start working on canon
-
 ## Docker
 
 ### Use of local environments
@@ -20,7 +18,7 @@ If you are using node directly to develop, please recall your typical `.env` fil
 2. Build your container with:
   - NO ENV VARS AT BUILDTIME: `docker build -t <PROJECT_NAME>-canon-site .`
   - WITH ENV VARS AT BUILDTIME: `docker build --build-arg <ENV_NAME>=<ENV_VALUE> -t <PROJECT_NAME>-canon-site .`
-3. Run your container: 
+3. Run your container:
   - NO ENV VARS AT RUNTIME: `docker run -p 3300:3300 <PROJECT_NAME>-canon-site`
   - WITH ENV VARS AT RUNTIME: `docker run --env-file=./.env.local -p 3300:3300 <PROJECT_NAME>-canon-site`
 
