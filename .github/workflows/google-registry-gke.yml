@@ -1,12 +1,12 @@
-# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Cloud Run when a commit is pushed to the "main" branch
+# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Google Kubernetes Engine when a commit is pushed to the "develop" branch
 #
 # To configure this workflow:
 #
 # 1. Ensure the required Google Cloud APIs are enabled in the project:
 #
-#    Cloud Build          cloudbuild.googleapis.com
-#    Cloud Run            run.googleapis.com
-#    Artifact Registry    artifactregistry.googleapis.com
+#    Cloud Build              cloudbuild.googleapis.com
+#    Kubernetes Engine API    container.googleapis.com
+#    Artifact Registry        artifactregistry.googleapis.com
 #
 # 2. Create a service account (if you don't have one) with the following fields:
 #
@@ -15,12 +15,8 @@
 #
 # 3. Ensure the service account have the required IAM permissions granted:
 #
-#    Cloud Build
-#      roles/cloudbuild.builds.editor    (cloud build editor)
-#      roles/cloudbuild.builds.builder   (cloud build service account)
-#
-#    Cloud Run
-#      roles/run.admin                   (cloud run admin)
+#    Kubernetes Engine Developer
+#      roles/container.developer         (kubernetes engine developer)
 #
 #    Artifact Registry
 #      roles/artifactregistry.repoAdmin  (artifact registry repository administrator)
@@ -44,34 +40,23 @@
 #      GCP_ARTIFACT_REGISTRY_NAME        (Google Cloud Articaft Registry Repository Name)
 #      GCP_ARTIFACT_REGISTRY_LOCATION    (Google Cloud Artifact Registry Reposotiry Location)
 #
-# 5. Ensure you have the following GitHub Vatiables for each environment that you will set up:
-#
-#    GitHub Secrets
-#      CANON_CMS_DB                      (Canon CMD DB String)
-#      FLICKR_API_KEY                    (Flickr API Key)
-#      GOOGLE_APPLICATION_CREDENTIALS    (Google Credential)
+# 5. Ensure you have the following GitHub Variables for each environment that you will set up:
 #
 #    GitHub Variables
 #      GCP_CLOUDRUN_SERVICE              (CloudRun Service Name of the environment)
 #      GCP_CLOUDRUN_REGION               (CloudRun Service Region of the environment)
-#      CANON_API                         (Canon API Endpoint)
-#      CANON_CMS_CUBES                   (Canon Tesseract API Cubes Endpoint)
-#      CANON_CMS_ENABLE                  (Canon CMS Enable CMS)
-#      CANON_CMS_FORCE_HTTPS             (Canon CMS Force HTTPS)
-#      CANON_CMS_LOGGING                 (Canon CMS Logging)
-#      CANON_CONST_STORAGE_BUCKET        (Google Storage Bucket)
-#      CANON_GOOGLE_ANALYTICS            (Google Analytics Code)
-#      CANON_LANGUAGES                   (Canon Languages)
-#      CANON_LANGUAGE_DEFAULT            (Canon Language Default)
-#      CANON_LOGINS                      (Canon CMS Logins)
+#      GKE_APP_NAME                      (Google Kubernetes Engine Deployment Name)
+#      GKE_APP_NAMESPACE                 (Google Kubernetes Engine Deployment Namespace)
+#      GKE_CLUSTER                       (Google Kubernetes Engine Cluster Name)
+#      GKE_ZONE                          (Google Kubernetes Engine Cluster Zone)
 #
 # Further reading:
-#   Cloud Run IAM permissions                 - https://cloud.google.com/run/docs/deploying
-#   Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
-#   Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
-#   Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
-#   Deploy CloudRun Github Actions            - https://github.com/google-github-actions/deploy-cloudrun
-name: Build to Artifact Registry and Deploy to GKE
+#    Kubernetes Developer                      - https://cloud.google.com/iam/docs/understanding-roles#container.developer
+#    Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
+#    Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
+#    Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
+#    Deploy CloudRun Github Actions            - https://github.com/google-github-actions/deploy-cloudrun
+name: [Google Cloud] Build to Artifact Registry and Deploy to GKE
 
 on:
   push:
