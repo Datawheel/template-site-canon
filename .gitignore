@@ -10,8 +10,8 @@ node_modules
 **/*.bundle.js
 
 # environment variable files for autoenv and direnv
+.env
 .envrc
-.env.local
 
 # docker files
 dockerfiles/nginx/certs/*
@@ -19,7 +19,3 @@ dockerfiles/nginx/conf.d/default.conf
 
 # pm2 ecosystem config
 ecosystem.config.js
-
-# gcp private keys
-*.gcp.json
-*.gcp.encoded

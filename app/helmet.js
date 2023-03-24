@@ -1,3 +1,5 @@
+const title = "Canon CMS";
+
 export default {
   link: [
     {rel: "icon", href: "favicon.ico"}
@@ -10,7 +12,7 @@ export default {
     {name: "mobile-web-app-capable", content: "yes"},
     {name: "apple-mobile-web-app-capable", content: "yes"},
     {name: "apple-mobile-web-app-status-bar-style", content: "black"},
-    {name: "apple-mobile-web-app-title", content: "undefined"}
+    {name: "apple-mobile-web-app-title", content: title}
   ],
-  title: "undefined"
+  title
 };
