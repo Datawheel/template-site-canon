@@ -1,4 +1,4 @@
-# Canon-Site Template
+# Canon CMS Template for NextJS
 
 This is a Canon-Site template for projects using [canon](https://github.com/Datawheel/canon) as main react environment. To start using this template, just create a new repository from this template and start coding 🎉
 
