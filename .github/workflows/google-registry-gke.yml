@@ -50,6 +50,9 @@
 #      GKE_CLUSTER                       (Kubernetes Cluster Name)
 #      GKE_ZONE                          (Kubernetes Cluster Location)
 #
+# 6. Ensure the following files exists for Helm
+#   ./helm/values.yaml                   (Development Environment Values)
+#
 # Further reading:
 #   Cloud Run IAM permissions                 - https://cloud.google.com/run/docs/deploying
 #   Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
